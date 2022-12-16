@@ -3,12 +3,11 @@ version: 0.2
 run-as: root
 
 env:
-  shell: bash
-  secrets-manager:
-        DB_NAME: "DBsecretAdi:DB_NAME"
-        DB_USER: "DBsecretAdi:DB_USER"
-        DB_PASSWORD: "DBsecretAdi:DB_PASSWORD"
-        DB_HOST: "DBsecretAdi:DB_Host"
+  parameter-store:
+        DB_NAME: "/adi/DB_NAME"
+        DB_USER: "/adi/DB_USER"
+        DB_PASSWORD: "/adi/DB_PASSWORD"
+        DB_HOST: "/adi/DB_Host"
 
 phases:
     pre_build:
