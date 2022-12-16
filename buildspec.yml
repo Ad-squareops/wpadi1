@@ -4,34 +4,24 @@ run-as: root
 
 env:
   parameter-store:
-        DB_NAME: "/adi/DB_NAME"
-        DB_USER: "/adi/DB_USER"
-        DB_PASSWORD: "/adi/DB_PASSWORD"
-        DB_HOST: "/adi/DB_Host"
+    DB_NAME: "/adi/DB_NAME"
+    DB_USER: "/adi/DB_USER"
+    DB_PASSWORD: "/adi/DB_PASSWORD"
+    DB_HOST: "/adi/DB_Host"
 
 phases:
-    pre_build:
-        commands:
-            - echo "Pre build phase execution is going to start"
-            - sudo apt update -y
-            - echo "installing source wordpress dependancies"
-            - sudo apt install nginx -y
-            - echo "Pre build ends here"
-    build:
-        commands:
-            - sed -i 's/database_name_here/'$DB_NAME'/' wp-config.php
-            - sed -i 's/username_here/'$DB_USER'/' wp-config.php
-            - sed -i 's/password_here/'$DB_PASSWORD'/' wp-config.php
-            - sed -i 's/localhost/'$DB_Host'/' wp-config.php
-            - cat wp-config.php
-            - echo build started on 'date'
-            - echo "compile the wordpress code"
-    post_build:
-        commands:
-            - echo build execution Completed on 'date'
-
+  install:
+    commands:
+      - apt update -y
+  pre_build:
+    commands:
+      - sed -i 's/database_name_here/'$DB_NAME'/' wp-config.php
+      - sed -i 's/username_here/'$DB_USER'/' wp-config.php
+      - sed -i 's/password_here/'$DB_PASSWORD'/' wp-config.php
+      - sed -i 's/localhost/'$DB_HOST'/' wp-config.php
+      - cat wp-config.php
+  
 artifacts:
-    files:
-        - echo "Uploading artifacts to bucket for next process of deployment"
-        - '**/*'
+  files:
+    - '**/*'
 
