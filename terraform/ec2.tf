@@ -11,3 +11,4 @@ resource "aws_instance" "s1" {
     Name = "adi-test-public"
   }
 }
+##
