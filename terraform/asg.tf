@@ -57,3 +57,4 @@ resource "aws_autoscaling_policy" "asg-policy" {
     target_value = 50.0
   }
 }
+###
