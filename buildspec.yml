@@ -12,7 +12,7 @@ env:
 phases:
   install:
     commands:
-      - apt update -y
+      - sudo apt update -y
   pre_build:
     commands:
       - sed -i 's/database_name_here/'$DB_NAME'/' wp-config.php
