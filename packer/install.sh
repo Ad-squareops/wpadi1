@@ -17,12 +17,6 @@ sudo rm -rf default main.zip nginx-configuration-main/
 sudo systemctl reload nginx
 sudo apt install mysql-server -y
 sudo cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
-cd /var/www/html/
-sudo sed -i "s/'localhost'/$_ENV['DB_HOST']/" wp-config.php
-sudo sed -i "s/'password_here'/$_ENV['DB_PASSWORD']/" wp-config.php
-sudo sed -i "s/'username_here'/$_ENV['DB_USER']/" wp-config.php
-sudo sed -i "s/'database_name_here'/$_ENV['DB_NAME']/" wp-config.php
-cd ../../..
 
 # code deploy agnet installation
 sudo apt update
