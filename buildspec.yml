@@ -20,10 +20,10 @@ phases:
     build:
         commands:
             - echo "build phase execution is going to start"
-            - sed -i "s|$_ENV['DB_NAME']|'$DB_NAME'|" wp-config.php
-            - sed -i "s|$_ENV['DB_USER']|'$DB_USER'|" wp-config.php
-            - sed -i "s|$_ENV['DB_NAME']|'$DB_PASSWORD'|" wp-config.php
-            - sed -i "s|$_ENV['DB_HOST']|'$DB_Host'|" wp-config.php
+            - sed -i "s/$_ENV['DB_NAME']/'$DB_NAME'/" wp-config.php
+            - sed -i "s/$_ENV['DB_USER']/'$DB_USER'/" wp-config.php
+            - sed -i "s/$_ENV['DB_NAME']/'$DB_PASSWORD'/" wp-config.php
+            - sed -i "s/$_ENV['DB_HOST']/'$DB_Host'/" wp-config.php
             - echo build started on 'date'
             - echo "compile the wordpress code"
     post_build:
