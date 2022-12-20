@@ -16,7 +16,4 @@ hooks:
       timeout: 300
       runas: root
       
-  ValidateService:
-    - location: script/curl_check.sh
-      timeout: 300
-      runas: root
+  
