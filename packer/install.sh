@@ -38,6 +38,3 @@ sudo dpkg -i amazon-cloudwatch-agent.deb
 
 #aws cli installation
 sudo snap install aws-cli --classic 
-
-sudo systemctl enable codedeploy-agent
-sudo systemctl start codedeploy-agent
