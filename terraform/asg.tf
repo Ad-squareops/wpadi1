@@ -28,12 +28,12 @@ module "asg" {
   launch_template_name        = "adi-LT-test"
   launch_template_description = "Launch template example"
   update_default_version      = true
-
-  image_id          = "ami-0ec52ef324bd47f0b"
-  instance_type     = "t3a.small"
-  key_name          = "adikp1"
-  ebs_optimized     = true
-  enable_monitoring = true
+  security_groups             = [aws_security_group.SG.id]
+  image_id                    = "ami-0ec52ef324bd47f0b"
+  instance_type               = "t3a.small"
+  key_name                    = "adikp1"
+  ebs_optimized               = true
+  enable_monitoring           = true
 
   # IAM role & instance profile
   iam_instance_profile_name = "adi-ec2-role"
