@@ -1,5 +1,3 @@
-
-
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
 
@@ -10,9 +8,7 @@ module "vpc" {
   public_subnets       = [cidrsubnet("20.0.0.0/16", 8, 2), cidrsubnet("20.0.0.0/16", 8, 3)]
   private_subnet_names = ["Adi-Private-Subnet-One", "Adi-Private-Subnet-Two"]
   public_subnet_names  = ["Adi-Public-Subnet-One", "Adi-Public-Subnet-Two"]
-  enable_dns_hostnames = true
-  enable_dns_support   = true
-
+ 
   enable_nat_gateway = true
   single_nat_gateway = true
   vpc_tags = {
@@ -20,4 +16,3 @@ module "vpc" {
     terraform = "true"
   }
 }
-#####
