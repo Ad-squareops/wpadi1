@@ -16,7 +16,6 @@ sudo systemctl reload php7.4-fpm.service
 sudo rm -rf default main.zip nginx-configuration-main/
 sudo systemctl reload nginx
 sudo apt install mysql-server -y
-sudo cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
 cd ../../..
 
 # code deploy agnet installation
