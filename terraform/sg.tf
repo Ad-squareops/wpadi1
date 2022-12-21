@@ -33,6 +33,14 @@ resource "aws_security_group" "SG" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+    
+  ingress {
+    description      = "access"
+    from_port        = 22
+    to_port          = 22
+    protocol         = "tcp"
+    security_groups = [aws_security_group.pritunl-sg.id]
+  }
 
   egress {
     from_port   = 0
