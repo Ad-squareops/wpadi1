@@ -19,7 +19,7 @@ module "db" {
   port                      = "3306"
   create_db_option_group    = false
   create_db_parameter_group = false
-  vpc_security_group_ids    = [aws_security_group.SG.id]
+  vpc_security_group_ids    = [aws_security_group.rdsSG.id]
   create_db_subnet_group    = true
   subnet_ids                = [element(module.vpc.private_subnets, 0), element(module.vpc.private_subnets, 1)]
 
@@ -28,4 +28,28 @@ module "db" {
     Name = "terraform-rds-adi"
   }
 }
-###
+
+## RDS SG
+  resource "aws_security_group" "rdsSG" {
+  name   = "rds-sg"
+  vpc_id = module.vpc.vpc_id
+
+  ingress {
+    description      = "access"
+    from_port        = 3306
+    to_port          = 3306
+    protocol         = "MYSQL/Aurora"
+    security_groups  = [aws_security_group.sg.id]
+  }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "rds-sg"
+  }
+}
+####
