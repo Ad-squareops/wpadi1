@@ -1,5 +1,4 @@
 #!/bin/bash
-sudo apt update && sudo apt upgrade -y
 sudo wget https://s3.us-east-2.amazonaws.com/amazoncloudwatch-agent-us-east-2/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb
 sudo dpkg -i amazon-cloudwatch-agent.deb
 sudo touch amazon-cloudwatch-agent.json
