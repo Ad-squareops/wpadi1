@@ -35,10 +35,10 @@ module "db" {
   vpc_id = module.vpc.vpc_id
 
   ingress {
-    description      = "access"
+    description      = "MYSQL/Aurora"
     from_port        = 3306
     to_port          = 3306
-    protocol         = "MYSQL/Aurora"
+    protocol         = "tcp"
     security_groups  = [aws_security_group.sg.id]
   }
   egress {
