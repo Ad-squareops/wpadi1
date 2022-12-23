@@ -9,7 +9,7 @@ module "alb" {
 
   vpc_id          = module.vpc.vpc_id
   subnets         = [element(module.vpc.public_subnets, 0), element(module.vpc.public_subnets, 1)]
-  security_groups = [aws_security_group.SG.id]
+  security_groups = [aws_security_group.alb-sg.id]
 
   target_groups = [
     {
@@ -53,4 +53,3 @@ module "alb" {
     Name = "terraform-tg-adi"
   }
 }
-#####
