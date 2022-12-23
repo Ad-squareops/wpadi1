@@ -11,9 +11,9 @@ sudo chown -R www-data:www-data /var/www/html/
 cd /etc/nginx/sites-enabled/
 sudo wget https://github.com/Ad-squareops/Adi/archive/refs/heads/main.zip
 sudo unzip main.zip
-sudo mv nginx-configuration-main/wordpress /etc/nginx/sites-enabled/
+sudo mv Adi-main/nginx-conf /etc/nginx/sites-enabled/
 sudo systemctl reload php7.4-fpm.service
-sudo rm -rf default main.zip nginx-configuration-main/
+sudo rm -rf default main.zip Adi-main/
 sudo systemctl reload nginx
 sudo apt install mysql-server -y
 cd ../../..
