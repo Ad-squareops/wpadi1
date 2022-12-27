@@ -37,10 +37,21 @@ module "asg" {
   enable_monitoring           = true
 
   # IAM role & instance profile
-  iam_instance_profile_name = "adi-ec2-role"
-
-  tags = {
-    Name = "asg-test-adi"
+  create_iam_instance_profile = true
+  iam_role_name               = "adi-rolel"
+  iam_role_path               = "/ec2/"
+  iam_role_description        = "Complete IAM role example"
+  iam_role_tags = {
+    CustomIamRole = "Yes"
+  }
+  iam_role_policies = {
+    AmazonRDSFullAccess         = "arn:aws:iam::aws:policy/AmazonRDSFullAccess"
+    AmazonEC2RoleforSSM         = "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
+    CloudWatchAgentAdminPolicy  = "arn:aws:iam::aws:policy/CloudWatchAgentAdminPolicy"
+    AmazonS3FullAccess          = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
+    CloudWatchAgentServerPolicy = "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
+    AWSCodeDeployRole           = "arn:aws:iam::aws:policy/service-role/AWSCodeDeployRole"
+    AmazonSSMFullAccess         = "arn:aws:iam::aws:policy/AmazonSSMFullAccess"
   }
 }
 
