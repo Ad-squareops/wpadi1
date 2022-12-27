@@ -1,0 +1,6 @@
+# IAM role & instance profile
+  iam_instance_profile_name = "adi-ec2-role"
+
+  tags = {
+    Name = "asg-test-adi"
+  }
