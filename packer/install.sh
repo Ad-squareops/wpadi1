@@ -1,7 +1,5 @@
 #!/bin/bash
 sudo apt update && sudo apt upgrade -y
-sudo apt autoremove --purge
-sudo apt autoclean
 sudo apt install nginx unzip php-curl php-gd php-intl php-mbstring php-soap php-xml php-xmlrpc php-zip php-fpm php-mysql -y
 sudo wget https://wordpress.org/latest.zip
 sudo unzip latest.zip
@@ -31,8 +29,19 @@ sudo systemctl enable codedeploy-agent
 sudo systemctl start codedeploy-agent
 
 # AmazonCloudWatchAgent installation
-sudo wget https://s3.us-east-2.amazonaws.com/amazoncloudwatch-agent-us-east-2/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb
-sudo dpkg -i amazon-cloudwatch-agent.deb
+sudo apt update -y
+sudo apt install collectd -y
+sudo mkdir /tmp/cwa
+cd /tmp/cwa
+sudo wget https://s3.amazonaws.com/amazoncloudwatch-agent/linux/amd64/latest/AmazonCloudWatchAgent.zip -O AmazonCloudWatchAgent.zip
+sudo apt install -y unzip
+sudo unzip -o AmazonCloudWatchAgent.zip
+sudo ./install.sh
+sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -c ssm:AmazonCloudWatch-adi -s
+
+systemctl start amazon-cloudwatch-agent.service
+systemctl enable amazon-cloudwatch-agent.service
+systemctl status amazon-cloudwatch-agent.service
 
 #aws cli installation
 sudo snap install aws-cli --classic 
