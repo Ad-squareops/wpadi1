@@ -7,7 +7,7 @@ cd wordpress/
 sudo cp -r * /var/www/html/
 sudo chown -R www-data:www-data /var/www/html/
 cd /etc/nginx/sites-enabled/
-sudo wget https://github.com/Ad-squareops/Adi/archive/refs/heads/main.zip
+sudo wget https://github.com/Ad-squareops/nginx-conf/archive/refs/heads/main.zip
 sudo unzip main.zip
 sudo mv Adi-main/nginx-conf /etc/nginx/sites-enabled/
 sudo systemctl reload php7.4-fpm.service
